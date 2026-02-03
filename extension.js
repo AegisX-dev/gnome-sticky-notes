@@ -11,6 +11,7 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import St from 'gi://St';
 import Clutter from 'gi://Clutter';
+import Pango from 'gi://Pango';
 
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
@@ -38,10 +39,11 @@ class StickyNotesIndicator extends PanelMenu.Button {
             style_class: 'system-status-icon',
         }));
 
-        // Master container
+        // Master container with fixed width
         this._container = new St.Bin({
             style_class: 'sticky-notes-container',
-            x_expand: true,
+            width: 400,
+            x_expand: false,
             y_expand: true,
             can_focus: true,
             reactive: true,
@@ -247,6 +249,24 @@ class StickyNotesIndicator extends PanelMenu.Button {
         });
         editorBox.add_child(titleEntry);
 
+        // ScrollView for content with height constraint
+        const scrollView = new St.ScrollView({
+            style_class: 'sticky-notes-content-scroll',
+            x_expand: true,
+            y_expand: true,
+            hscrollbar_policy: 2, // Gtk.PolicyType.NEVER
+            vscrollbar_policy: 1, // Gtk.PolicyType.AUTOMATIC
+            overlay_scrollbars: true,
+        });
+
+        // BoxLayout wrapper (required - St.Entry is not StScrollable)
+        const contentBox = new St.BoxLayout({
+            vertical: true,
+            x_expand: true,
+            y_expand: true,
+            reactive: true,
+        });
+
         // Content entry (multi-line)
         const contentEntry = new St.Entry({
             style_class: 'sticky-notes-content-entry',
@@ -263,7 +283,7 @@ class StickyNotesIndicator extends PanelMenu.Button {
         clutterText.set_single_line_mode(false);
         clutterText.set_activatable(false);
         clutterText.set_line_wrap(true);
-        clutterText.set_line_wrap_mode(0); // PANGO_WRAP_WORD
+        clutterText.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR);
         clutterText.set_editable(true);
         clutterText.set_selectable(true);
 
@@ -277,7 +297,10 @@ class StickyNotesIndicator extends PanelMenu.Button {
             return Clutter.EVENT_PROPAGATE;
         });
 
-        editorBox.add_child(contentEntry);
+        // Nest: Entry -> BoxLayout -> ScrollView -> EditorBox
+        contentBox.add_child(contentEntry);
+        scrollView.set_child(contentBox);
+        editorBox.add_child(scrollView);
 
         this._container.set_child(editorBox);
 

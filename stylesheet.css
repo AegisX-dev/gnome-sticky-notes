@@ -121,20 +121,27 @@
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Content entry (multi-line) */
-.sticky-notes-content-entry {
-    padding: 10px 12px;
+/* Content scroll container */
+.sticky-notes-content-scroll {
+    min-height: 150px;
+    max-height: 500px;
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Content entry (multi-line) */
+.sticky-notes-content-entry {
+    padding: 10px 12px;
+    background-color: transparent;
+    border: none;
     color: #ffffff;
     font-size: 13px;
-    min-height: 150px;
+    min-height: 140px;
 }
 
 .sticky-notes-content-entry:focus {
-    border-color: rgba(98, 160, 234, 0.6);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: transparent;
 }
 
 /* Hint text styling */
@@ -142,3 +149,4 @@
 .sticky-notes-content-entry StLabel {
     color: rgba(255, 255, 255, 0.4);
 }
+
