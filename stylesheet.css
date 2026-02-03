@@ -1,0 +1,144 @@
+/* Sticky Notes Extension Stylesheet */
+
+/* Master container */
+.sticky-notes-container {
+    min-width: 300px;
+    min-height: 200px;
+    padding: 8px;
+}
+
+/* List view - use margin on children instead of spacing */
+.sticky-notes-list {
+    padding: 0;
+}
+
+.sticky-notes-list > * {
+    margin-bottom: 6px;
+}
+
+.sticky-notes-list > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Note item button */
+.sticky-notes-item {
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.08);
+    transition-duration: 150ms;
+}
+
+.sticky-notes-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.sticky-notes-item:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sticky-notes-item-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Delete button */
+.sticky-notes-delete-btn {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: transparent;
+    margin-left: 8px;
+}
+
+.sticky-notes-delete-btn:hover {
+    background-color: rgba(255, 100, 100, 0.3);
+}
+
+.sticky-notes-delete-btn:active {
+    background-color: rgba(255, 100, 100, 0.5);
+}
+
+/* Add note button - Ubuntu Orange */
+.sticky-notes-add-btn {
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: #E95420;
+    color: #ffffff;
+    font-weight: 600;
+    margin-top: 8px;
+    border: none;
+    box-shadow: none;
+    transition-duration: 150ms;
+}
+
+.sticky-notes-add-btn:hover {
+    background-color: #C7461B;
+}
+
+.sticky-notes-add-btn:active {
+    background-color: #A63A16;
+}
+
+/* Editor view - use margin on children instead of spacing */
+.sticky-notes-editor {
+    padding: 0;
+}
+
+.sticky-notes-editor > * {
+    margin-bottom: 10px;
+}
+
+.sticky-notes-editor > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Back button */
+.sticky-notes-back-btn {
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    transition-duration: 150ms;
+}
+
+.sticky-notes-back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Title entry */
+.sticky-notes-title-entry {
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sticky-notes-title-entry:focus {
+    border-color: rgba(98, 160, 234, 0.6);
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Content entry (multi-line) */
+.sticky-notes-content-entry {
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 13px;
+    min-height: 150px;
+}
+
+.sticky-notes-content-entry:focus {
+    border-color: rgba(98, 160, 234, 0.6);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Hint text styling */
+.sticky-notes-title-entry StLabel,
+.sticky-notes-content-entry StLabel {
+    color: rgba(255, 255, 255, 0.4);
+}

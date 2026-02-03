@@ -1,0 +1,8 @@
+{
+  "name": "Sticky Notes",
+  "description": "A panel-based sticky note manager for prompts and notes.",
+  "uuid": "stickynotes@aegisx-dev.github.com",
+  "shell-version": [
+    "46"
+  ]
+}
